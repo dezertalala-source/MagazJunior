@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="MagazJunior/MagazJunior.vcxproj" />
+  <Project Path="MagazJunior/MagazJunior.vcxproj" Id="68cc52ed-2dc4-45b8-9151-589bfc1fe2e2" />
 </Solution>

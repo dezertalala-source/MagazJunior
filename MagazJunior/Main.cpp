@@ -27,6 +27,8 @@ int main() {
 
 
 
+	bool on_off = true;
+
 
 	int choice = 0;
 	int asort_item_num = 0;
@@ -42,26 +44,31 @@ int main() {
 		choice -= 1;
 
 		if (choice == 0) {
-			for (int i = 0; i < 4; i++) {
-				std::cout << "\t[" << i + 1 << "]" << fruts[i] << " " << fruts_price[i] << " рублей\n";
-			}
-			std::cout << "\nВведите номер товара который хотите купить: ";
-			std::cin >> asort_item_num;
-			asort_item_num -= 1;
-			if (asort_item_num < 4) {
-				for (int i = 0; i < 9; i++) {
-					if (fruts[asort_item_num] == shop_list[i]) {
-						int x = 0;
-						std::cout << "\nВведите сколько вы хотите взять " << shop_list[i] << " в литрах : \n";
-						std::cin >> x;
-						shop_litr[i] = x;
-						std::cout << x << " литров успешно добавлены";
-						break;
+			if (on_off) {
+				for (int i = 0; i < 4; i++) {
+					std::cout << "\t[" << i + 1 << "]" << fruts[i] << " " << fruts_price[i] << " рублей\n";
+				}
+				std::cout << "\nВведите номер товара который хотите купить: ";
+				std::cin >> asort_item_num;
+				asort_item_num -= 1;
+				if (asort_item_num < 4) {
+					for (int i = 0; i < 9; i++) {
+						if (fruts[asort_item_num] == shop_list[i]) {
+							int x = 0;
+							std::cout << "\nВведите сколько вы хотите взять " << shop_list[i] << " в литрах : \n";
+							std::cin >> x;
+							shop_litr[i] = x;
+							std::cout << x << " литров успешно добавлены";
+							break;
+						}
 					}
+				}
+				else {
+					std::cout << "\n\n\nневерный ввод";
 				}
 			}
 			else {
-				std::cout << "\n\n\nневерный ввод";
+				std::cout << "\n\nВы выбрали настойку вас нельзя сейчас выбрать фруктовый сок\n\n\n";
 			}
 
 
@@ -160,8 +167,31 @@ int main() {
 			std::cout << "\n\nОплата вместе со скидкой" << skidka_sum << " рублей";
 		}
 		else if (choice == 4) {
-			// Тут сделать цыкл фор от 2 до конца фруктов далее сделать переменую которая показывает статус можно ли фрукты или нет
-			// дома до 00.00
+			if (not on_off) {
+				while (true) {
+					int nastyka = 0;
+					std::cout << "Выберите номер насйтоки\n[1] боярышник - 300 рублей\n[INFO] если вы выбрите ее то не сможете выбрать фруктовый сок\nВведите номер настойки: ";
+					std::cin >> nastyka;
+					if (nastyka == 1) {
+						on_off = true;
+
+						int nast_litr = 0;
+						std::cout << "Вы успешно выбрали настойку (боярышник) введите сколько хотите литров: ";
+						std::cin >> nast_litr;
+
+
+						std::cout << nast_litr << " литров успешно добавлено";
+						break;
+					}
+					else {
+						std::cout << "Нетут такого ответа";
+					}
+				}
+			}
+			else {
+				std::cout << "Вы выбрали фруктовый сок теперь нельзя выбрать настойку)";
+			}
+
 		}
 		else {
 			std::cout << "\n\n\tТакого варинта нету!!\n\n\n";
